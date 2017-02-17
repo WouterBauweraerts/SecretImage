@@ -5,10 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Repository
 public class PineappleRepo {
@@ -17,28 +14,24 @@ public class PineappleRepo {
 
     public PineappleRepo() {
         this.pineapples = new HashSet<>();
-        //InitialiseHc();
     }
 
-    @PostConstruct
-    private void InitialiseHc() {
-        pineapples.add(new Pineapple("Wouter", 0));
-        pineapples.add(new Pineapple("Lil' Billy",1));
-        pineapples.add(new Pineapple("Sanne",2));
-        pineapples.add(new Pineapple("Jens",3));
-        pineapples.add(new Pineapple("Elise",4));
-        pineapples.add(new Pineapple("Kevin S",5));
-        pineapples.add(new Pineapple("Steven", 6));
-        pineapples.add(new Pineapple("Pieter", 7));
-        pineapples.add(new Pineapple("Paulien", 8));
-        pineapples.add(new Pineapple("Xan", 9));
-    }
-
-    public List<Pineapple> ReadAllPineapples() {
+    public List<Pineapple> readAllPineapples() {
         return new ArrayList<>(pineapples);
     }
 
     public void addPineapple(Pineapple newPineapple) {
         pineapples.add(newPineapple);
+    }
+
+    public boolean deletePineapple(String name) {
+        Optional<Pineapple> pineapple = readPineapple(name);
+        return pineapple.isPresent()?pineapples.remove(pineapple.get()):false;
+    }
+
+    public Optional<Pineapple> readPineapple(String name) {
+        return pineapples.stream()
+                .filter(p->p.getName().equals(name))
+                .findFirst();
     }
 }

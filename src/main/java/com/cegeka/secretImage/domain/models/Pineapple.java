@@ -31,18 +31,12 @@ public class Pineapple implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         Pineapple pineapple = (Pineapple) o;
-
-        if (password != pineapple.password) return false;
-        if (score != pineapple.score) return false;
-        return name != null ? name.equals(pineapple.name) : pineapple.name == null;
+        return this.name.equals(pineapple.name);
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + password;
-        result = 31 * result + score;
-        return result;
+        return name.hashCode();
     }
 
     public boolean validate() throws ValidationException{

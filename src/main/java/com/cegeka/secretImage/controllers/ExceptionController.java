@@ -19,6 +19,11 @@ public class ExceptionController {
     public ResponseEntity<String> validationErrorHandler(Exception e){
         return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler
+    public ResponseEntity<String> unsupportedOperationHandler(UnsupportedOperationException e) {
+        return new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
+    }
 }
 /*@ControllerAdvice
 public class ExceptionHandlerController {
