@@ -22,19 +22,23 @@ public class PineappleRepo {
 
     @PostConstruct
     private void InitialiseHc() {
-        pineapples.add(new Pineapple("Wouter"));
-        pineapples.add(new Pineapple("Lil' Billy"));
-        pineapples.add(new Pineapple("Sanne"));
-        pineapples.add(new Pineapple("Jens"));
-        pineapples.add(new Pineapple("Elise"));
-        pineapples.add(new Pineapple("Kevin S"));
-        pineapples.add(new Pineapple("Steven"));
-        pineapples.add(new Pineapple("Pieter"));
-        pineapples.add(new Pineapple("Paulien"));
-        pineapples.add(new Pineapple("Xan"));
+        pineapples.add(new Pineapple("Wouter", 0));
+        pineapples.add(new Pineapple("Lil' Billy",1));
+        pineapples.add(new Pineapple("Sanne",2));
+        pineapples.add(new Pineapple("Jens",3));
+        pineapples.add(new Pineapple("Elise",4));
+        pineapples.add(new Pineapple("Kevin S",5));
+        pineapples.add(new Pineapple("Steven", 6));
+        pineapples.add(new Pineapple("Pieter", 7));
+        pineapples.add(new Pineapple("Paulien", 8));
+        pineapples.add(new Pineapple("Xan", 9));
     }
 
     public List<Pineapple> ReadAllPineapples() {
         return new ArrayList<>(pineapples);
+    }
+
+    public void addPineapple(Pineapple newPineapple) {
+        pineapples.add(newPineapple);
     }
 }
