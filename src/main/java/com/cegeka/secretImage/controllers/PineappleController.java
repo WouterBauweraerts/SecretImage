@@ -32,7 +32,7 @@ public class PineappleController {
         return new ResponseEntity<>(pineapples, pineapples.size() == 0 ? HttpStatus.NO_CONTENT : HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/add")
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity addPineapple(@RequestParam(name = "name") String name, @RequestParam(name = "password") String password) {
         try {
             service.addPineapple(name, password);
@@ -44,12 +44,13 @@ public class PineappleController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/delete")
+    @RequestMapping(method = RequestMethod.DELETE)
     public ResponseEntity deletePineapple(@RequestParam(name = "name") String name) {
         return new ResponseEntity(service.deletePineapple(name) ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
     }
 
-    public ResponseEntity<Pineapple> getPineapple(String name) {
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public @ResponseBody ResponseEntity<Pineapple> getPineapple(@RequestParam(name = "name") String name) {
         ResponseEntity<Pineapple> result = new ResponseEntity<Pineapple>(HttpStatus.NO_CONTENT);
         Optional<Pineapple> found = service.getPineapple(name);
         if (found.isPresent()){
