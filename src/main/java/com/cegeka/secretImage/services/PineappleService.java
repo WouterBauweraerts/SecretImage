@@ -36,4 +36,17 @@ public class PineappleService {
     public Optional<Pineapple> getPineapple(String name) {
         return repo.readPineapple(name);
     }
+
+    public boolean loginUser(String name, String password) {
+        Optional<Pineapple> user = getPineapple(name);
+        return (userExists(user) && passwordMatches(password, user));
+    }
+
+    private boolean passwordMatches(String password, Optional<Pineapple> user) {
+        return password.hashCode() == user.get().pineapplePasswordHash();
+    }
+
+    private boolean userExists(Optional<Pineapple> user) {
+        return user.isPresent();
+    }
 }
