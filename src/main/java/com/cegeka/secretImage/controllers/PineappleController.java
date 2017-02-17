@@ -2,6 +2,7 @@ package com.cegeka.secretImage.controllers;
 
 import com.cegeka.secretImage.domain.models.Pineapple;
 import com.cegeka.secretImage.services.PineappleService;
+import com.cegeka.secretImage.session.Context;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/pineapple")
 public class PineappleController {
+
     @Autowired
     private PineappleService service;
 
