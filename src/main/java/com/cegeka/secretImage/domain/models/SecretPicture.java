@@ -1,11 +1,13 @@
 package com.cegeka.secretImage.domain.models;
 
+import java.awt.image.BufferedImage;
+
 public class SecretPicture {
 
     private int pineapple;
-    private Object picture;
+    private BufferedImage picture;
 
-    public SecretPicture(int pineapple, Object picture){
+    public SecretPicture(int pineapple, BufferedImage picture){
         this.pineapple=pineapple;
         this.picture=picture;
     }

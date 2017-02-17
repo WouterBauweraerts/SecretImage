@@ -5,12 +5,14 @@ import com.cegeka.secretImage.domain.repos.SecretRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.image.BufferedImage;
+
 @Service
 public class SecretService {
     @Autowired
     private SecretRepo secretRepo;
 
-    public void addSecretPicture(int pineapple, Object picture) throws UnsupportedOperationException{
+    public void addSecretPicture(int pineapple, BufferedImage picture) throws UnsupportedOperationException{
         if(secretRepo.SecretPictureAlreadyExists(pineapple)){
             throw new UnsupportedOperationException("You already have a secret picture.");
         }
