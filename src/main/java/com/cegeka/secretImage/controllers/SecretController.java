@@ -1,5 +1,6 @@
 package com.cegeka.secretImage.controllers;
 
+import com.cegeka.secretImage.domain.models.SecretPicture;
 import com.cegeka.secretImage.services.SecretService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,5 +30,12 @@ public class SecretController {
         } catch (UnsupportedOperationException e) {
             return exceptionController.unsupportedOperationHandler(e);
         }
+    }
+    public void deleteSecretPicture(int pineapple){
+        secretService.deleteSecretPicture(pineapple);
+    }
+
+    public SecretPicture getRandomSecretPicture() throws UnsupportedOperationException{
+        return secretService.getRandomSecretPicture();
     }
 }
