@@ -13,6 +13,11 @@ import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -34,7 +39,12 @@ public class SecretServiceTests {
 
     @Test
     public void addSecretPicture_CallsSecretRepo_addSecretPicture() throws Exception{
-        Object picture=new Object();
+        BufferedImage picture=null;
+        try{
+            picture= ImageIO.read(new File("SecretPictures/test.jpg"));
+        } catch(Exception e){
+            e.printStackTrace();
+        }
 
         secretService.addSecretPicture(0, picture);
 
@@ -58,12 +68,16 @@ public class SecretServiceTests {
     @Test
     public void getRandomSecretPicture_ReturnsRandomSecretPicture() throws Exception{
         int pineapple=0;
-        Object picture=new Object();
+        BufferedImage picture=null;
+        try{
+            picture=ImageIO.read(new File("SecretPictures/test.jpg"));
+        } catch(Exception e){
+            e.printStackTrace();
+        }
         SecretPicture secretPicture = new SecretPicture(pineapple,picture);
+
         when(secretRepo.getRandomSecretPicture()).thenReturn(secretPicture);
 
         assertThat(secretService.getRandomSecretPicture().getClass().toString().equals("SecretPicture"));
-
-
     }
 }

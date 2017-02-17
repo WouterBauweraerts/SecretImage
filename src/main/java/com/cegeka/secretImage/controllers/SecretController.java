@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.awt.image.BufferedImage;
+
 @RestController
 @RequestMapping("/secret")
 public class SecretController {
@@ -15,7 +17,7 @@ public class SecretController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public void addSecretPicture(int pineapple, Object picture){
+    public void addSecretPicture(int pineapple, BufferedImage picture){
         secretService.addSecretPicture(pineapple, picture);
     }
 }
