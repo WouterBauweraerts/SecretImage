@@ -25,9 +25,7 @@ public class Pineapple implements Serializable {
         return score;
     }
 
-    public int pineapplePasswordHash(){
-        return password;
-    }
+    public int pineapplePasswordHash(){ return password; }
 
     @Override
     public boolean equals(Object o) {

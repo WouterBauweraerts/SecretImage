@@ -1,10 +1,8 @@
 package com.cegeka.secretImage.domain.repos;
 
 import com.cegeka.secretImage.domain.models.Pineapple;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.PostConstruct;
 import java.util.*;
 
 @Repository

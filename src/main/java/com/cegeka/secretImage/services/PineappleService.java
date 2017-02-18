@@ -39,14 +39,11 @@ public class PineappleService {
 
     public boolean loginUser(String name, String password) {
         Optional<Pineapple> user = getPineapple(name);
-        return (userExists(user) && passwordMatches(password, user));
+        return checkLoginCredentials(password, user);
     }
 
-    private boolean passwordMatches(String password, Optional<Pineapple> user) {
-        return password.hashCode() == user.get().pineapplePasswordHash();
+    private boolean checkLoginCredentials(String password, Optional<Pineapple> user) {
+        return user.isPresent() && password.hashCode() == user.get().pineapplePasswordHash();
     }
 
-    private boolean userExists(Optional<Pineapple> user) {
-        return user.isPresent();
-    }
 }

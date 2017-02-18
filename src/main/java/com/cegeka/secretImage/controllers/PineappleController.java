@@ -2,11 +2,11 @@ package com.cegeka.secretImage.controllers;
 
 import com.cegeka.secretImage.domain.models.Pineapple;
 import com.cegeka.secretImage.services.PineappleService;
-import com.cegeka.secretImage.session.Context;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import javax.xml.bind.ValidationException;
 import java.util.List;
 import java.util.Optional;
@@ -52,10 +52,10 @@ public class PineappleController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public @ResponseBody ResponseEntity<Pineapple> getPineapple(@RequestParam(name = "name") String name) {
-        ResponseEntity<Pineapple> result = new ResponseEntity<Pineapple>(HttpStatus.NO_CONTENT);
+        ResponseEntity<Pineapple> result = new ResponseEntity<>(HttpStatus.NO_CONTENT);
         Optional<Pineapple> found = service.getPineapple(name);
         if (found.isPresent()){
-            result = new ResponseEntity<Pineapple>(found.get(), HttpStatus.OK);
+            result = new ResponseEntity<>(found.get(), HttpStatus.OK);
         }
         return result;
     }
