@@ -1,7 +1,9 @@
 package com.cegeka.secretImage.domain.repos;
 
 import com.cegeka.secretImage.domain.models.SecretPictureOfTheDay;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class SecretOfTheDayRepo {
     private SecretPictureOfTheDay secretPictureOfTheDay;
 

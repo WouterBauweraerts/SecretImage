@@ -28,10 +28,13 @@ public class LoginController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<String> loginUser(@RequestParam(name = "name") String name, @RequestParam(name = "password") String password){
-        boolean loginOk = service.loginUser(name, password);
+        return LoginSucceeded(name, service.loginUser(name, password));
+    }
+
+    private ResponseEntity<String> LoginSucceeded(@RequestParam(name = "name") String name, boolean loginOk) {
         if (loginOk){
             context.setUser(name);
-            return new ResponseEntity<String>("Login ok",HttpStatus.OK);
+            return new ResponseEntity<String>("Login ok", HttpStatus.OK);
         }
         return new ResponseEntity<String>("Login failed: check your name and password pineapple", HttpStatus.UNAUTHORIZED);
     }
@@ -46,8 +49,3 @@ public class LoginController {
         return new ResponseEntity(HttpStatus.OK);
     }
 }
-/*@Component
-@Scope(proxyMode=ScopedProxyMode.TARGET_CLASS, value="session")
-public class ShoppingCart implements Serializable{
-...
-}*/

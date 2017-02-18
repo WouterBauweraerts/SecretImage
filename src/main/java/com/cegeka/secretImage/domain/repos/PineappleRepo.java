@@ -13,11 +13,11 @@ public class PineappleRepo {
     private Set<Pineapple> pineapples;
 
     public PineappleRepo() {
-        this.pineapples = new HashSet<>();
+        this.pineapples = Collections.synchronizedSet(new HashSet<>());
     }
 
     public List<Pineapple> readAllPineapples() {
-        return new ArrayList<>(pineapples);
+        return Collections.unmodifiableList(new ArrayList<>(pineapples));
     }
 
     public void addPineapple(Pineapple newPineapple) {
@@ -26,7 +26,7 @@ public class PineappleRepo {
 
     public boolean deletePineapple(String name) {
         Optional<Pineapple> pineapple = readPineapple(name);
-        return pineapple.isPresent()?pineapples.remove(pineapple.get()):false;
+        return pineapple.isPresent() && pineapples.remove(pineapple.get());
     }
 
     public Optional<Pineapple> readPineapple(String name) {
