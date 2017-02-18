@@ -1,10 +1,7 @@
 package com.cegeka.secretImage.controllers;
 
-import com.cegeka.secretImage.domain.models.SecretPicture;
 import com.cegeka.secretImage.domain.models.SecretPictureOfTheDay;
 import com.cegeka.secretImage.services.GameService;
-import com.cegeka.secretImage.services.PineappleService;
-import com.cegeka.secretImage.services.SecretService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

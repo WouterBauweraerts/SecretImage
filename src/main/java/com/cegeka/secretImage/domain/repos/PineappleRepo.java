@@ -10,9 +10,7 @@ public class PineappleRepo {
 
     private Set<Pineapple> pineapples;
 
-    public PineappleRepo() {
-        this.pineapples = Collections.synchronizedSet(new HashSet<>());
-    }
+    public PineappleRepo() { this.pineapples = Collections.synchronizedSet(new HashSet<>()); }
 
     public List<Pineapple> readAllPineapples() {
         return Collections.unmodifiableList(new ArrayList<>(pineapples));
