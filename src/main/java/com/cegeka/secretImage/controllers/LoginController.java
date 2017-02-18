@@ -9,14 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.context.annotation.SessionScope;
 
-import javax.servlet.http.HttpSession;
-import java.io.ObjectInputStream;
-
-/**
- * Created by wouterba on 17/02/2017.
- */
 @RestController
 @RequestMapping("/")
 public class LoginController {
@@ -34,9 +27,9 @@ public class LoginController {
     private ResponseEntity<String> LoginSucceeded(@RequestParam(name = "name") String name, boolean loginOk) {
         if (loginOk){
             context.setUser(name);
-            return new ResponseEntity<String>("Login ok", HttpStatus.OK);
+            return new ResponseEntity<>("Login ok", HttpStatus.OK);
         }
-        return new ResponseEntity<String>("Login failed: check your name and password pineapple", HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>("Login failed: check your name and password pineapple", HttpStatus.UNAUTHORIZED);
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)

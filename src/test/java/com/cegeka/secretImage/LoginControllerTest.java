@@ -11,9 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit4.SpringRunner;
 
-/**
- * Created by wouterba on 17/02/2017.
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class LoginControllerTest {
