@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,12 +29,13 @@ public class GameControllerTests {
     public ExpectedException expectedException = ExpectedException.none();
 
     @InjectMocks
-    //private SecretController secretController;
-    //private LoginController loginController;
-    //private PineappleController pineappleController;
+    private SecretController secretController;
+    private LoginController loginController;
+    private PineappleController pineappleController;
+
+    @Mock
     private GameController gameController;
 
-    //@Mock
 
 
     @Test
