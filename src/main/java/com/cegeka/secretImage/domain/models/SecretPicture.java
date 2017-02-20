@@ -19,6 +19,10 @@ public class SecretPicture {
         return pineapple;
     }
 
+    public BufferedImage getPicture() {
+        return picture;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

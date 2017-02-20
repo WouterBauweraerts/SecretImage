@@ -17,11 +17,11 @@ import java.util.Date;
 public class ExceptionController {
     @ExceptionHandler(value = ValidationException.class)
     public ResponseEntity<String> validationErrorHandler(Exception e){
-        return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler
     public ResponseEntity<String> unsupportedOperationHandler(UnsupportedOperationException e) {
-        return new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
     }
 }

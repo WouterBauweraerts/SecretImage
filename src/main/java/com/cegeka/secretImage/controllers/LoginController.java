@@ -22,16 +22,15 @@ public class LoginController {
 
     @RequestMapping(method = RequestMethod.POST)
     public /*ResponseEntity<String>*/RedirectView loginUser(@RequestParam(name = "name") String name, @RequestParam(name = "password") String password){
-        //return LoginSucceeded(name, service.loginUser(name, password));
-        return new RedirectView("scores.html");
+        return new RedirectView(LoginSucceeded(name, service.loginUser(name,password)));
     }
 
-    private ResponseEntity<String> LoginSucceeded(@RequestParam(name = "name") String name, boolean loginOk) {
+    private String LoginSucceeded(@RequestParam(name = "name") String name, boolean loginOk) {
         if (loginOk){
             context.setUser(name);
-            return new ResponseEntity<>("redirect:scores.html", HttpStatus.OK);
+            return "scores.html";
         }
-        return new ResponseEntity<>("Login failed: check your name and password pineapple", HttpStatus.UNAUTHORIZED);
+        return "index.html";
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
