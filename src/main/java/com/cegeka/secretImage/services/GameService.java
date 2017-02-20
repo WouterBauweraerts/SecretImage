@@ -7,8 +7,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class GameService {
-    @Autowired
+
     private SecretPictureOfTheDay secretPictureOfTheDay;
+
     @Autowired
     private SecretController secretController;
 
@@ -16,16 +17,7 @@ public class GameService {
         return secretPictureOfTheDay;
     }
 
-    public void createNewGameDay() {
-        secretPictureOfTheDay=new SecretPictureOfTheDay(secretController.getRandomSecretPicture());
-    }
-
     public void createNewGame() {
-    }
-
-    public void startVoting() {
-    }
-
-    public void endVoting() {
+        secretPictureOfTheDay=new SecretPictureOfTheDay(secretController.getRandomSecretPicture());
     }
 }

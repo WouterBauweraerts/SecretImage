@@ -1,11 +1,14 @@
 package com.cegeka.secretImage.domain.models;
 
+import org.springframework.stereotype.Component;
+
 import java.awt.image.BufferedImage;
 
 public class SecretPicture {
 
     private int pineapple;
     private BufferedImage picture;
+
 
     public SecretPicture(int pineapple, BufferedImage picture){
         this.pineapple=pineapple;

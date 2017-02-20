@@ -27,7 +27,7 @@ public class LoginController {
     private ResponseEntity<String> LoginSucceeded(@RequestParam(name = "name") String name, boolean loginOk) {
         if (loginOk){
             context.setUser(name);
-            return new ResponseEntity<>("Login ok", HttpStatus.OK);
+            return new ResponseEntity<>("scores.html", HttpStatus.OK);
         }
         return new ResponseEntity<>("Login failed: check your name and password pineapple", HttpStatus.UNAUTHORIZED);
     }
