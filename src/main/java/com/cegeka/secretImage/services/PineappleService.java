@@ -45,5 +45,4 @@ public class PineappleService {
     private boolean checkLoginCredentials(String password, Optional<Pineapple> user) {
         return user.isPresent() && password.hashCode() == user.get().pineapplePasswordHash();
     }
-
 }

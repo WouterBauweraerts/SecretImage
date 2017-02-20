@@ -10,7 +10,10 @@ public class PineappleRepo {
 
     private Set<Pineapple> pineapples;
 
-    public PineappleRepo() { this.pineapples = Collections.synchronizedSet(new HashSet<>()); }
+    public PineappleRepo() {
+        this.pineapples = Collections.synchronizedSet(new HashSet<>());
+        pineapples.add(new Pineapple("wouter", "azerty".hashCode()));
+    }
 
     public List<Pineapple> readAllPineapples() {
         return Collections.unmodifiableList(new ArrayList<>(pineapples));
@@ -27,7 +30,7 @@ public class PineappleRepo {
 
     public Optional<Pineapple> readPineapple(String name) {
         return pineapples.stream()
-                .filter(p->p.getName().equals(name))
+                .filter(p -> p.getName().equals(name))
                 .findFirst();
     }
 }

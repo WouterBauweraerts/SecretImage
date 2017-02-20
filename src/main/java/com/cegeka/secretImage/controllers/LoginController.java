@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 @RequestMapping("/login")
@@ -19,15 +20,16 @@ public class LoginController {
     @Autowired
     private PineappleService service;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<String> loginUser(@RequestParam(name = "name") String name, @RequestParam(name = "password") String password){
-        return LoginSucceeded(name, service.loginUser(name, password));
+    @RequestMapping(method = RequestMethod.POST)
+    public /*ResponseEntity<String>*/RedirectView loginUser(@RequestParam(name = "name") String name, @RequestParam(name = "password") String password){
+        //return LoginSucceeded(name, service.loginUser(name, password));
+        return new RedirectView("scores.html");
     }
 
     private ResponseEntity<String> LoginSucceeded(@RequestParam(name = "name") String name, boolean loginOk) {
         if (loginOk){
             context.setUser(name);
-            return new ResponseEntity<>("scores.html", HttpStatus.OK);
+            return new ResponseEntity<>("redirect:scores.html", HttpStatus.OK);
         }
         return new ResponseEntity<>("Login failed: check your name and password pineapple", HttpStatus.UNAUTHORIZED);
     }

@@ -37,7 +37,7 @@ public class GameController {
         secretController.addSecretPicture(pineapple, picture);
     }
 
-    public void createNewGameDay() {
+/*    public void createNewGameDay() {
         gameService.createNewGameDay();
     }
 
@@ -55,5 +55,5 @@ public class GameController {
 
     public void LoginOfPineapple() {
        // loginController.LoginOfPineapple();
-    }
+    }*/
 }
